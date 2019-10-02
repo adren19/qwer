@@ -1,0 +1,55 @@
+<html lang="ru" xmlns:og="http://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" type="text/css" href="app/styles/reset.css">
+<link rel="stylesheet" type="text/css" href="app/styles/main.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+<div id="range1">
+
+<div class="outer">
+  <div class="middle">
+    <div class="inner">
+
+        <div class="login-wr">
+          <h2>Вход</h2>
+          
+          <div class="form">
+            <input id="lgin" type="text" placeholder="Пользователь">
+            <input id="psin" type="password" placeholder="Пароль">
+            <button onclick="auth()"> Авторизация </button>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+function auth() {
+$.post( "app/php/connect.php", { login: $('#lgin').val(), password: $('#psin').val() })
+  .done(function( data ) {
+  if(data != "0"){
+    $('body').html(data);
+	}
+	else
+	{
+	alert( "Не правильно введен логин или пароль!");
+	}
+  });
+}
+
+</script>
+
+
+
+</body>
+
+</html>
